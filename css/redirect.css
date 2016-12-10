@@ -1,0 +1,69 @@
+body {
+	background-color: #2f3752;
+	color: white;
+	font-family: Roboto, sans-serif;
+}
+
+h1 {
+	font-weight: 500;
+	font-size: 9em;
+	text-align: center;
+}
+
+h2 {
+	font-weight: 300;
+	font-size: 2em;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: #a0a0a0;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #a0a0a0;	
+}
+
+a:link {
+	text-decoration: none;
+	color: #a0a0a0;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #a0a0a0;
+}
+
+#msgContainer {
+	margin: 12% auto 0;
+}
+
+#heroMsgNode {
+	letter-spacing: 3px;
+	margin: 0;
+}
+
+#subHeroMsgNode1 {
+	margin: 1% auto 0 auto;
+}
+
+#subHeroMsgNode2 {
+	font-size: 1.5em;
+	color: #a0a0a0;
+	margin-top: 0.5%;
+	margin-bottom: 5%;
+}
+
+#buttonHolder {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 300;
+}
+
+.button {
+	padding: 15px 20px;
+	border: 0.5px solid #a0a0a0;
+}

@@ -1,0 +1,93 @@
+body {
+	font-family: Roboto, sans-serif !important;
+}
+
+h1 {
+	font-size: 2em;
+	font-weight: 500;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+#headerNode {
+	margin: 1% 0 2.5% 0;
+}
+
+#SMULogo {
+	margin-left: 10%;
+	width: 8.5%;
+	float: left;
+}
+
+#systemName {
+	margin: 0.35% 0.6%;
+	color: #997d4e;
+	float: left;
+}
+
+/*Below are specific scaling styling*/
+@media (min-width: 1280px) {
+	/*For the Macbook users & S3 users (divide by 1.5 from base) */
+	#systemName {
+		font-size: 1.066667em;
+	}
+
+	#userIcon, #notifIcon, #helpIcon {
+		width: 24px;
+		height: 24px;
+	}
+}
+
+@media (min-width: 1440px) {
+	/*For the MBP-13 users (divide by 1.33333333 from base) */
+	#systemName {
+		font-size: 1.2em;
+	}
+
+	#userIcon, #notifIcon, #helpIcon {
+		width: 27px;
+		height: 27px;
+	}
+}
+
+@media (min-width: 1600px) {
+	/*For the normal Windows users/SP4 (divide by 1.2 from base) */
+	#systemName {
+		font-size: 1.333333em;
+	}
+
+	#userIcon, #notifIcon, #helpIcon {
+		width: 30px;
+		height: 30px;
+	}
+}
+
+@media (min-width: 1920px) {
+	/*For the MBP-15 users (base) */
+	#systemName {
+		font-size: 1.6em;
+	}
+
+	#userIcon, #notifIcon, #helpIcon {
+		width: 36px;
+		height: 36px;
+	}
+}
+
+@media (min-width: 2560px) {
+	/*For the crazy (divide by 0.75 from base)*/
+	#systemName {
+		font-size: 2.133333em;
+	}
+
+	#userIcon, #notifIcon, #helpIcon {
+		width: 48px;
+		height: 48px;
+	}
+}
+
+#form1 {
+	background-color: black;
+}
