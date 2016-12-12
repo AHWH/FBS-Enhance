@@ -1,5 +1,6 @@
 body {
 	font-family: Roboto, sans-serif !important;
+	margin: 0;
 }
 
 h1 {
@@ -12,7 +13,8 @@ h2 {
 }
 
 #headerNode {
-	margin: 1% 0 2.5% 0;
+	margin: 0;
+	padding: 1% 0 1% 0;
 }
 
 #SMULogo {
@@ -27,11 +29,38 @@ h2 {
 	float: left;
 }
 
+#iconsNode {
+	margin: 0 10% 0 78%;
+	padding-top: 0.5%;
+}
+
+.iconEnclosure {
+	float: left;
+}
+
+.iconEnclosure:hover {
+	background-color: #997d4e;
+}
+
+.clear {
+	clear: both;
+}
+
+#form1 {
+	display: block;
+	background-color: black;
+}
+
+
 /*Below are specific scaling styling*/
 @media (min-width: 1280px) {
 	/*For the Macbook users & S3 users (divide by 1.5 from base) */
 	#systemName {
 		font-size: 1.066667em;
+	}
+
+	.iconEnclosure {
+		padding: 0 12px;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -46,6 +75,10 @@ h2 {
 		font-size: 1.2em;
 	}
 
+	.iconEnclosure {
+		padding: 0 13.5px;
+	}	
+
 	#userIcon, #notifIcon, #helpIcon {
 		width: 27px;
 		height: 27px;
@@ -56,6 +89,10 @@ h2 {
 	/*For the normal Windows users/SP4 (divide by 1.2 from base) */
 	#systemName {
 		font-size: 1.333333em;
+	}
+
+	.iconEnclosure {
+		padding: 0 15px;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -70,6 +107,10 @@ h2 {
 		font-size: 1.6em;
 	}
 
+	.iconEnclosure {
+		padding: 0 18px;
+	}	
+
 	#userIcon, #notifIcon, #helpIcon {
 		width: 36px;
 		height: 36px;
@@ -82,12 +123,12 @@ h2 {
 		font-size: 2.133333em;
 	}
 
+	.iconEnclosure {
+		padding: 0 24px;
+	}
+
 	#userIcon, #notifIcon, #helpIcon {
 		width: 48px;
 		height: 48px;
 	}
-}
-
-#form1 {
-	background-color: black;
 }

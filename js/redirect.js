@@ -1,3 +1,12 @@
+//Changing Doctype
+var doctype = document.implementation.createDocumentType(
+    'html',
+    '',
+    ''
+);
+
+document.doctype.parentNode.replaceChild(doctype, document.doctype);
+
 //Changing Head
 var headNode = document.getElementsByTagName("head");
 var titleNode = document.getElementsByTagName("title");
@@ -40,8 +49,6 @@ var heroMsgTextNode = document.createTextNode("Hello");
 heroMsgNode.appendChild(heroMsgTextNode);
 divNode1.appendChild(heroMsgNode);
 
-bodyNode[0].appendChild(divNode1);
-
 //Creating & appending sub-hero msg
 var subHeroMsgNode1 = document.createElement("h2");
 subHeroMsgNode1.setAttribute("id", "subHeroMsgNode1");
@@ -55,18 +62,33 @@ subHeroMsgNode2.appendChild(subHeroMsgTextNode2);
 
 divNode1.appendChild(subHeroMsgNode1);
 divNode1.appendChild(subHeroMsgNode2);
-bodyNode[0].appendChild(divNode1);
+
+//Loading node (Planned)
+/*var divNode2 = document.createElement("div");
+divNode2.setAttribute("id", "loadingNode");
+
+var loadingNode = document.createElement("object");
+loadingNode.setAttribute("id", "loading");
+loadingNode.setAttribute("type", "image/svg+xml");
+loadingNode.setAttribute("data", chrome.extension.getURL("graphics/loading.svg"));
+var loadingTextNode = document.createTextNode("Loading");
+loadingNode.appendChild(loadingTextNode);
+divNode2.appendChild(loadingNode);
+divNode1.appendChild(divNode2);
+bodyNode[0].appendChild(divNode1);*/
 
 //Creating & appending button
-var divNode2 = document.createElement("div");
-divNode2.setAttribute("id", "buttonHolder");
+var divNode3 = document.createElement("div");
+divNode3.setAttribute("id", "buttonHolder");
 var linkNode = document.createElement("a");
 linkNode.setAttribute("href", "https://fbs.intranet.smu.edu.sg/MainMenu.aspx");
 linkNode.setAttribute("class", "button");
 linkNode.setAttribute("id", "redirect-button");
-var linkTextNode = document.createTextNode("click here after 5s");
+var linkTextNode = document.createTextNode("click here");
 
 linkNode.appendChild(linkTextNode);
-divNode2.appendChild(linkNode);
-divNode1.appendChild(divNode2);
+divNode3.appendChild(linkNode);
+divNode1.appendChild(divNode3);
 bodyNode[0].appendChild(divNode1);
+
+location.assign("https://fbs.intranet.smu.edu.sg/MainMenu.aspx");

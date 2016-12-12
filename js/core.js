@@ -1,3 +1,7 @@
+//Global node
+var clearNode = document.createElement("div");
+clearNode.setAttribute("class", "clear");
+
 //Grabbing your details
 var treasureNode = document.getElementById("cellInfo");
 var name = treasureNode.childNodes[0].nodeValue
@@ -59,34 +63,57 @@ systemTitleTextNode = document.createTextNode("Booking System");
 systemTitleNode.appendChild(systemTitleTextNode);
 mainHeaderDiv.appendChild(systemTitleNode);
 
-
 //Icons
+var iconsNode = document.createElement("div");
+iconsNode.setAttribute("id", "iconsNode");
 //User
+var userIconEnclosureNode = document.createElement("div");
+userIconEnclosureNode.setAttribute("class", "iconEnclosure");
+
 var userIconNode = document.createElement("object");
 userIconNode.setAttribute("id", "userIcon");
 userIconNode.setAttribute("type", "image/svg+xml");
 userIconNode.setAttribute("data", chrome.extension.getURL("graphics/user.svg"));
 var userIconTextNode = document.createTextNode("User");
+
 userIconNode.appendChild(userIconTextNode);
-mainHeaderDiv.appendChild(userIconNode);
+userIconEnclosureNode.appendChild(userIconNode);
+iconsNode.appendChild(userIconEnclosureNode);
 
 //Notification
+var notifIconEnclosureNode = document.createElement("div");
+notifIconEnclosureNode.setAttribute("class", "iconEnclosure");
+
 var notifIconNode = document.createElement("object");
 notifIconNode.setAttribute("id", "notifIcon");
 notifIconNode.setAttribute("type", "image/svg+xml");
 notifIconNode.setAttribute("data", chrome.extension.getURL("graphics/notification.svg"));
 var notifIconTextNode = document.createTextNode("Notification");
+
 notifIconNode.appendChild(notifIconTextNode);
-mainHeaderDiv.appendChild(notifIconNode);
+notifIconEnclosureNode.appendChild(notifIconNode);
+iconsNode.appendChild(notifIconEnclosureNode);
 
 //Help
+var helpIconEnclosureNode = document.createElement("div");
+helpIconEnclosureNode.setAttribute("class", "iconEnclosure");
+
 var helpIconNode = document.createElement("object");
 helpIconNode.setAttribute("id", "helpIcon");
 helpIconNode.setAttribute("type", "image/svg+xml");
 helpIconNode.setAttribute("data", chrome.extension.getURL("graphics/help.svg"));
 var helpIconTextNode = document.createTextNode("Help");
+
 helpIconNode.appendChild(helpIconTextNode);
-mainHeaderDiv.appendChild(helpIconNode);
+helpIconEnclosureNode.appendChild(helpIconNode);
+iconsNode.appendChild(helpIconEnclosureNode);
+iconsNode.appendChild(clearNode);
+
+mainHeaderDiv.appendChild(iconsNode);
+
+//Clear Div
+mainHeaderDiv.appendChild(clearNode.cloneNode(true));
+
 
 /*var nameNode = document.createElement("h2");
 nameNode.setAttribute("id", "name");

@@ -56,6 +56,11 @@ a:hover {
 	margin-bottom: 5%;
 }
 
+#loadingNode {
+	display: flex;
+	justify-content: center;
+}
+
 #buttonHolder {
 	margin: 0 auto;
 	text-align: center;
