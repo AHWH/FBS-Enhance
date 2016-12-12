@@ -16,22 +16,7 @@ h2 {
 	text-align: center;
 }
 
-a {
-	text-decoration: none;
-	color: #a0a0a0;
-}
-
-a:visited {
-	text-decoration: none;
-	color: #a0a0a0;	
-}
-
-a:link {
-	text-decoration: none;
-	color: #a0a0a0;
-}
-
-a:hover {
+a:link, a:visited, a:hover, a:active {
 	text-decoration: none;
 	color: #a0a0a0;
 }
@@ -56,10 +41,49 @@ a:hover {
 	margin-bottom: 5%;
 }
 
-#loadingNode {
-	display: flex;
-	justify-content: center;
+/*Greatest appreication to Tobias (https://github.com/tobiasahlin/SpinKit)
+Start of Spinner*/
+.spinner {
+ 	width: 50px;
+ 	height: 50px;	
+ 	position: relative;
+ 	margin: 100px auto;
 }
+
+.double-bounce1, .double-bounce2 {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #997d4e;
+	opacity: 0.6;
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	-webkit-animation: sk-bounce 1.5s infinite ease-in-out;
+	animation: sk-bounce 1.5s infinite ease-in-out;
+}
+
+.double-bounce2 {
+	-webkit-animation-delay: -0.75s;
+	animation-delay: -0.75s;
+}
+
+@-webkit-keyframes sk-bounce {
+	0%, 100% { -webkit-transform: scale(0.0) }
+	50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+	0%, 100% { 
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	} 50% { 
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	}
+}
+/*End of Spinner*/
 
 #buttonHolder {
 	margin: 0 auto;
@@ -71,4 +95,9 @@ a:hover {
 .button {
 	padding: 15px 20px;
 	border: 0.5px solid #a0a0a0;
+}
+
+.button:hover {
+	background-color: #997d4e;
+	color: white;
 }

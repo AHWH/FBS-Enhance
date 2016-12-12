@@ -38,9 +38,6 @@ linkNode.setAttribute("rel", "stylesheet");
 headNode[0].appendChild(linkNode);
 
 //New Top Bar (temporarily used firstChild to force it to top!)
-var topNode = document.createElement("div");
-topNode.setAttribute("id", "headerNode");
-
 var mainHeaderDiv = document.createElement("div");
 mainHeaderDiv.setAttribute("id", "mainHeaderDiv");
 
@@ -69,6 +66,8 @@ iconsNode.setAttribute("id", "iconsNode");
 //User
 var userIconEnclosureNode = document.createElement("div");
 userIconEnclosureNode.setAttribute("class", "iconEnclosure");
+userIconEnclosureNode.setAttribute("onMouseover", "document.getElementById(\"userDetailsDiv\").style.visibility = \"visible\";");
+userIconEnclosureNode.setAttribute("onMouseout", "document.getElementById(\"userDetailsDiv\").style.visibility = \"hidden\";");
 
 var userIconNode = document.createElement("object");
 userIconNode.setAttribute("id", "userIcon");
@@ -114,13 +113,28 @@ mainHeaderDiv.appendChild(iconsNode);
 //Clear Div
 mainHeaderDiv.appendChild(clearNode.cloneNode(true));
 
+//User Details Popup
+function showUserDetails() {
+	document.getElementById("userDetailsDiv").style.visibility = "visible";
+}
 
-/*var nameNode = document.createElement("h2");
-nameNode.setAttribute("id", "name");
-var nameTextNode = document.createTextNode("Hello, " + name);
-nameNode.appendChild(nameTextNode);
-mainHeaderDiv.appendChild(nameNode);*/
 
-topNode.appendChild(mainHeaderDiv);
+
+var userDetailsNode = document.createElement("div");
+userDetailsNode.setAttribute("id", "userDetailsDiv");
+
+var greetings$NameNode = document.createElement("h3");
+greetings$NameNode.setAttribute("id", "greetings$Name");
+var greetingsTextNode = document.createTextNode("Hello");
+greetings$NameNode.appendChild(greetingsTextNode);
+greetings$NameNode.appendChild(document.createElement("br"));
+greetings$NameNode.appendChild(document.createElement("br"));
+var _$NameTextNode = document.createTextNode(name);
+greetings$NameNode.appendChild(_$NameTextNode);
+userDetailsNode.appendChild(greetings$NameNode);
+
+mainHeaderDiv.appendChild(userDetailsNode);
+
+//Inserting the mother of all nodes
 var firstChild = bodyNode.firstChild;
-bodyNode.insertBefore(topNode, firstChild);
+bodyNode.insertBefore(mainHeaderDiv, firstChild);

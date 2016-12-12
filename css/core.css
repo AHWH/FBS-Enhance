@@ -14,24 +14,22 @@ h2 {
 
 #headerNode {
 	margin: 0;
-	padding: 1% 0 1% 0;
 }
 
 #SMULogo {
-	margin-left: 10%;
+	margin: 1% 0 1% 10%;
 	width: 8.5%;
 	float: left;
 }
 
 #systemName {
-	margin: 0.35% 0.6%;
+	margin: 1.35% 0.6% 1% 0.6%;
 	color: #997d4e;
 	float: left;
 }
 
 #iconsNode {
 	margin: 0 10% 0 78%;
-	padding-top: 0.5%;
 }
 
 .iconEnclosure {
@@ -42,8 +40,27 @@ h2 {
 	background-color: #997d4e;
 }
 
+/*#userIcon, #notifIcon, #helpIcon {
+	padding: 10px 0;
+}*/
+
 .clear {
 	clear: both;
+}
+
+#userDetailsDiv {
+	visibility: hidden;
+	position: fixed;
+	margin: 0 0 0 75%;
+	height: 300px;
+	width: 300px;
+	background-color: blue;
+}
+
+#greetings$NameNode {
+	margin: 1% 10%;
+	font-size: 1.5em;
+	font-weight: 300;
 }
 
 #form1 {
@@ -59,11 +76,8 @@ h2 {
 		font-size: 1.066667em;
 	}
 
-	.iconEnclosure {
-		padding: 0 12px;
-	}
-
 	#userIcon, #notifIcon, #helpIcon {
+		margin: 48% 12px;
 		width: 24px;
 		height: 24px;
 	}
@@ -75,11 +89,8 @@ h2 {
 		font-size: 1.2em;
 	}
 
-	.iconEnclosure {
-		padding: 0 13.5px;
-	}	
-
 	#userIcon, #notifIcon, #helpIcon {
+		margin: 48% 13.5px;
 		width: 27px;
 		height: 27px;
 	}
@@ -91,11 +102,8 @@ h2 {
 		font-size: 1.333333em;
 	}
 
-	.iconEnclosure {
-		padding: 0 15px;
-	}
-
 	#userIcon, #notifIcon, #helpIcon {
+		margin: 48% 15px;
 		width: 30px;
 		height: 30px;
 	}
@@ -107,11 +115,8 @@ h2 {
 		font-size: 1.6em;
 	}
 
-	.iconEnclosure {
-		padding: 0 18px;
-	}	
-
 	#userIcon, #notifIcon, #helpIcon {
+		margin: 48% 18px;
 		width: 36px;
 		height: 36px;
 	}
@@ -123,11 +128,8 @@ h2 {
 		font-size: 2.133333em;
 	}
 
-	.iconEnclosure {
-		padding: 0 24px;
-	}
-
 	#userIcon, #notifIcon, #helpIcon {
+		margin: 48% 24px;
 		width: 48px;
 		height: 48px;
 	}

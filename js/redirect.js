@@ -63,19 +63,20 @@ subHeroMsgNode2.appendChild(subHeroMsgTextNode2);
 divNode1.appendChild(subHeroMsgNode1);
 divNode1.appendChild(subHeroMsgNode2);
 
-//Loading node (Planned)
-/*var divNode2 = document.createElement("div");
-divNode2.setAttribute("id", "loadingNode");
-
-var loadingNode = document.createElement("object");
-loadingNode.setAttribute("id", "loading");
-loadingNode.setAttribute("type", "image/svg+xml");
-loadingNode.setAttribute("data", chrome.extension.getURL("graphics/loading.svg"));
-var loadingTextNode = document.createTextNode("Loading");
-loadingNode.appendChild(loadingTextNode);
-divNode2.appendChild(loadingNode);
+//Loading node
+var divNode2 = document.createElement("div");
+divNode2.setAttribute("class", "spinner");
+divNode2.setAttribute("id", "loading")
+var bounce1 = document.createElement("div");
+bounce1.setAttribute("class", "double-bounce1");
+var bounce2 = document.createElement("div");
+bounce2.setAttribute("class", "double-bounce2");
+divNode2.appendChild(bounce1);
+divNode2.appendChild(bounce2);
 divNode1.appendChild(divNode2);
-bodyNode[0].appendChild(divNode1);*/
+bodyNode[0].appendChild(divNode1);
+
+//location.assign("https://fbs.intranet.smu.edu.sg/MainMenu.aspx");
 
 //Creating & appending button
 var divNode3 = document.createElement("div");
@@ -88,7 +89,7 @@ var linkTextNode = document.createTextNode("click here");
 
 linkNode.appendChild(linkTextNode);
 divNode3.appendChild(linkNode);
-divNode1.appendChild(divNode3);
-bodyNode[0].appendChild(divNode1);
 
-location.assign("https://fbs.intranet.smu.edu.sg/MainMenu.aspx");
+setTimeout(function() {
+	document.getElementById("subHeroMsgNode2").innerHTML = "oops...you are still here. Try the button below: ";
+	divNode1.replaceChild(divNode3, divNode2);}, 5000);
