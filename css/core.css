@@ -4,12 +4,15 @@ body {
 }
 
 h1 {
-	font-size: 2em;
 	font-weight: 500;
 }
 
 h2 {
-	font-size: 1.5em;
+	font-weight: 500;
+}
+
+h3 {
+	font-weight: 300;
 }
 
 #headerNode {
@@ -40,10 +43,6 @@ h2 {
 	background-color: #997d4e;
 }
 
-/*#userIcon, #notifIcon, #helpIcon {
-	padding: 10px 0;
-}*/
-
 .clear {
 	clear: both;
 }
@@ -51,29 +50,88 @@ h2 {
 #userDetailsDiv {
 	visibility: hidden;
 	position: fixed;
-	margin: 0 0 0 75%;
-	height: 300px;
-	width: 300px;
-	background-color: blue;
+	margin: 0 0 0 70%;
+	background-color: #2f3752;
+	color: white;
+	opacity: 0.9;
 }
 
-#greetings$NameNode {
-	margin: 1% 10%;
-	font-size: 1.5em;
+#greetings {
 	font-weight: 300;
+	margin-bottom: 3%;
+}
+
+#name {
+	font-weight: 500;
+	margin: 0 auto 5% 0;
+}
+
+.horizontal-divide {
+	margin: 0;
+	border-bottom: 1px solid #a0a0a0;
+}
+
+#totalHoursText {
+	font-weight: 300;
+	margin: 6% 0 0 0;
+}
+
+#totalHoursAmt {
+	margin: 2% 0 0 0; 
+}
+
+#hoursRemain::before, #hoursUsed::before {
+	content: "•    ";
+}
+
+#hoursRemain, #hoursUsed {
+	margin: 3% 0 0 1%;
+}
+
+#outerBox {
+	margin-top: 8%;
+	height: 7%;
+	width: 100%;
+	background-color: #1c2131;
+	border: 1px solid #4a5782;
+}
+
+#innerBox {
+	margin: 1.2%;
+}
+
+@keyframes usageAnimation {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 50%;
+	}
+}
+
+#usedBox {
+	height: 80%;
+	background-color: #fff;
+	/*buggy*/
+	animation: usageAnimation 2s ease-in 1s infinite;
+	-webkit-animation: usageAnimation 2s ease-in 1s infinite;
 }
 
 #form1 {
 	display: block;
-	background-color: black;
+	background-color: red;
 }
 
 
 /*Below are specific scaling styling*/
 @media (min-width: 1280px) {
 	/*For the Macbook users & S3 users (divide by 1.5 from base) */
-	#systemName {
-		font-size: 1.066667em;
+	h1 {
+		font-size: 1.333333em;
+	}
+
+	h2 {
+		font-size: 1.133333em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -81,12 +139,23 @@ h2 {
 		width: 24px;
 		height: 24px;
 	}
+
+	#userDetailsDiv {
+		height: 200px;
+		width: 133.333333px;
+		padding: 0 10px;
+	}
+
 }
 
 @media (min-width: 1440px) {
 	/*For the MBP-13 users (divide by 1.33333333 from base) */
-	#systemName {
-		font-size: 1.2em;
+	h1 {
+		font-size: 1.5em;
+	}
+
+	h2 {
+		font-size: 1.275em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -94,12 +163,22 @@ h2 {
 		width: 27px;
 		height: 27px;
 	}
+
+	#userDetailsDiv {
+		height: 225px;
+		width: 150px;
+		padding: 0 11.25px;
+	}
 }
 
 @media (min-width: 1600px) {
 	/*For the normal Windows users/SP4 (divide by 1.2 from base) */
-	#systemName {
-		font-size: 1.333333em;
+	h1 {
+		font-size: 1.666667em;
+	}
+
+	h2 {
+		font-size: 1.416667em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -107,12 +186,26 @@ h2 {
 		width: 30px;
 		height: 30px;
 	}
+
+	#userDetailsDiv {
+		height: 250px;
+		width: 166.666667px;
+		padding: 0 12.5px;
+	}
 }
 
 @media (min-width: 1920px) {
 	/*For the MBP-15 users (base) */
-	#systemName {
-		font-size: 1.6em;
+	h1 {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 1.7em;
+	}
+
+	h3 {
+		font-size: 1.4em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -120,17 +213,33 @@ h2 {
 		width: 36px;
 		height: 36px;
 	}
+
+	#userDetailsDiv {
+		height: 300px;
+		width: 200px;
+		padding: 0 15px;
+	}
 }
 
 @media (min-width: 2560px) {
 	/*For the crazy (divide by 0.75 from base)*/
-	#systemName {
-		font-size: 2.133333em;
+	h1 {
+		font-size: 2.666667em;
+	}
+
+	h2 {
+		font-size: 2.266667em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
 		margin: 48% 24px;
 		width: 48px;
 		height: 48px;
+	}
+
+	#userDetailsDiv {
+		height: 400px;
+		width: 266.666667px;
+		padding: 0 20px;
 	}
 }

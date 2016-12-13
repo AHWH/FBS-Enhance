@@ -9,6 +9,7 @@ name = name.substring(0, name.length-2);
 
 var quotaUsed = document.getElementById("MainQuotaUsed").innerHTML;
 var quotaRemain = document.getElementById("MainQuotaRemaining").innerHTML;
+var quotaTotal = parseFloat(quotaUsed) + parseFloat(quotaRemain);
 
 //Removing Nodes
 var titleNode = document.getElementsByTagName("title");
@@ -37,6 +38,12 @@ linkNode.setAttribute("href", "https://fonts.googleapis.com/css?family=Roboto:30
 linkNode.setAttribute("rel", "stylesheet");
 headNode[0].appendChild(linkNode);
 
+//Injecting Script because of content-scripts limitations
+var scriptNode1 = document.createElement("script");
+scriptNode1.setAttribute("type", "text/javascript");
+scriptNode1.setAttribute("src", chrome.extension.getURL("js/portal.js"));
+headNode[0].appendChild(scriptNode1);
+
 //New Top Bar (temporarily used firstChild to force it to top!)
 var mainHeaderDiv = document.createElement("div");
 mainHeaderDiv.setAttribute("id", "mainHeaderDiv");
@@ -49,7 +56,7 @@ smuLogoNode.setAttribute("alt", "SMU Logo");
 mainHeaderDiv.appendChild(smuLogoNode);
 
 //FBS Title
-var systemTitleNode = document.createElement("h1");
+var systemTitleNode = document.createElement("h2");
 systemTitleNode.setAttribute("id", "systemName");
 var systemTitleTextNode = document.createTextNode("Facilities");
 systemTitleNode.appendChild(systemTitleTextNode);
@@ -66,8 +73,8 @@ iconsNode.setAttribute("id", "iconsNode");
 //User
 var userIconEnclosureNode = document.createElement("div");
 userIconEnclosureNode.setAttribute("class", "iconEnclosure");
-userIconEnclosureNode.setAttribute("onMouseover", "document.getElementById(\"userDetailsDiv\").style.visibility = \"visible\";");
-userIconEnclosureNode.setAttribute("onMouseout", "document.getElementById(\"userDetailsDiv\").style.visibility = \"hidden\";");
+userIconEnclosureNode.setAttribute("onMouseover", "userOnMouseIn()");
+userIconEnclosureNode.setAttribute("onMouseout", "userOnMouseOut();");
 
 var userIconNode = document.createElement("object");
 userIconNode.setAttribute("id", "userIcon");
@@ -113,28 +120,70 @@ mainHeaderDiv.appendChild(iconsNode);
 //Clear Div
 mainHeaderDiv.appendChild(clearNode.cloneNode(true));
 
+
 //User Details Popup
 function showUserDetails() {
 	document.getElementById("userDetailsDiv").style.visibility = "visible";
 }
 
-
-
+//Main Popup Node
 var userDetailsNode = document.createElement("div");
 userDetailsNode.setAttribute("id", "userDetailsDiv");
 
-var greetings$NameNode = document.createElement("h3");
-greetings$NameNode.setAttribute("id", "greetings$Name");
+//Greetings + Name node
+var greetingsNode = document.createElement("h2");
+greetingsNode.setAttribute("id", "greetings");
 var greetingsTextNode = document.createTextNode("Hello");
-greetings$NameNode.appendChild(greetingsTextNode);
-greetings$NameNode.appendChild(document.createElement("br"));
-greetings$NameNode.appendChild(document.createElement("br"));
+greetingsNode.appendChild(greetingsTextNode);
+var nameNode = document.createElement("h2");
+nameNode.setAttribute("id", "name");
 var _$NameTextNode = document.createTextNode(name);
-greetings$NameNode.appendChild(_$NameTextNode);
-userDetailsNode.appendChild(greetings$NameNode);
+nameNode.appendChild(_$NameTextNode);
+userDetailsNode.appendChild(greetingsNode);
+userDetailsNode.appendChild(nameNode);
+
+//Divider Node
+var dividerNode = document.createElement("div");
+dividerNode.setAttribute("class", "horizontal-divide");
+userDetailsNode.appendChild(dividerNode);
+
+//Hours Node
+var totalHoursText = document.createElement("h2");
+totalHoursText.setAttribute("id", "totalHoursText");
+var totalHoursTextNode = document.createTextNode("Total Hours:");
+totalHoursText.appendChild(totalHoursTextNode);
+userDetailsNode.appendChild(totalHoursText);
+
+var totalHoursAmt = document.createElement("h2");
+totalHoursAmt.setAttribute("id", "totalHoursAmt");
+var totalHoursAmtTextNode = document.createTextNode(quotaTotal);
+totalHoursAmt.appendChild(totalHoursAmtTextNode);
+userDetailsNode.appendChild(totalHoursAmt);
+
+var hoursRemain = document.createElement("h3");
+hoursRemain.setAttribute("id", "hoursRemain");
+var hoursRemainTextNode = document.createTextNode("Remain: " + quotaRemain + " hours");
+hoursRemain.appendChild(hoursRemainTextNode);
+userDetailsNode.appendChild(hoursRemain);
+
+var hoursUsed = document.createElement("h3");
+hoursUsed.setAttribute("id", "hoursUsed");
+var hoursUsedTextNode = document.createTextNode("Used: " + quotaUsed + " hours");
+hoursUsed.appendChild(hoursUsedTextNode);
+userDetailsNode.appendChild(hoursUsed);
+
+//Usage Box
+var outerBox = document.createElement("div");
+outerBox.setAttribute("id", "outerBox");
+var innerBox = document.createElement("div");
+innerBox.setAttribute("id", "innerBox");
+var usedBox = document.createElement("div");
+usedBox.setAttribute("id", "usedBox")
+innerBox.appendChild(usedBox);
+outerBox.appendChild(innerBox);
+userDetailsNode.appendChild(outerBox);
 
 mainHeaderDiv.appendChild(userDetailsNode);
-
 //Inserting the mother of all nodes
 var firstChild = bodyNode.firstChild;
 bodyNode.insertBefore(mainHeaderDiv, firstChild);
