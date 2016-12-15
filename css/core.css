@@ -89,33 +89,37 @@ h3 {
 }
 
 #outerBox {
-	margin-top: 8%;
-	height: 7%;
+	margin: 8% 0 9% 0;
+	padding: 1%;
 	width: 100%;
 	background-color: #1c2131;
 	border: 1px solid #4a5782;
 }
 
 #innerBox {
-	margin: 1.2%;
+	background-color: #fff;
+	height: 100%;
+	width: 1%;
+	max-width: 100%;
+	/*animation: usageAnimation 1s forwards 1s 1;
+	-webkit-animation: usageAnimation 1s forwards 1s 1;*/
 }
 
-@keyframes usageAnimation {
-	0% {
-		width: 0%;
+/*@keyframes usageAnimation {
+	from {
 	}
-	100% {
+	to {
 		width: 50%;
 	}
 }
 
-#usedBox {
-	height: 80%;
-	background-color: #fff;
-	/*buggy*/
-	animation: usageAnimation 2s ease-in 1s infinite;
-	-webkit-animation: usageAnimation 2s ease-in 1s infinite;
-}
+@-webkit-keyframes usageAnimation {
+	from {
+	}
+	to {
+		width: 50%;
+	}
+}*/
 
 #form1 {
 	display: block;
@@ -141,11 +145,14 @@ h3 {
 	}
 
 	#userDetailsDiv {
-		height: 200px;
+		min-height: 173.333333px;
 		width: 133.333333px;
 		padding: 0 10px;
 	}
 
+	#outerBox {
+		height: 12.125px;
+	}	
 }
 
 @media (min-width: 1440px) {
@@ -165,9 +172,13 @@ h3 {
 	}
 
 	#userDetailsDiv {
-		height: 225px;
+		min-height: 195px;
 		width: 150px;
 		padding: 0 11.25px;
+	}
+
+	#outerBox {
+		height: 13.641px;
 	}
 }
 
@@ -188,9 +199,13 @@ h3 {
 	}
 
 	#userDetailsDiv {
-		height: 250px;
+		min-height: 216.666667px;
 		width: 166.666667px;
 		padding: 0 12.5px;
+	}
+
+	#outerBox {
+		height: 15.157px;
 	}
 }
 
@@ -215,9 +230,13 @@ h3 {
 	}
 
 	#userDetailsDiv {
-		height: 300px;
+		min-height: 260px;
 		width: 200px;
 		padding: 0 15px;
+	}
+
+	#outerBox {
+		height: 18.188px;
 	}
 }
 
@@ -238,8 +257,12 @@ h3 {
 	}
 
 	#userDetailsDiv {
-		height: 400px;
+		min-height: 346.666667px;
 		width: 266.666667px;
 		padding: 0 20px;
+	}
+
+	#outerBox {
+		height: 24.251px;
 	}
 }

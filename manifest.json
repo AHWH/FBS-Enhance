@@ -4,8 +4,8 @@
   	"author" : "AHWH",
   	"name": "FBS Enhance",
   	"description": "Make Facility Booking System Great Again!",
-  	"version": "1.0.13122016.2302",
-  	"version_name": "1.0 alpha 11",
+  	"version": "1.0.15122016.2314",
+  	"version_name": "1.0 alpha 12",
 	
   	"icons" : {
   		"16" : "icon/FBSE-16.png",
@@ -25,8 +25,11 @@
   		"run_at" : "document_end"
   	}],
 
+    "permissions": [
+      "storage"
+    ],
+
   	"web_accessible_resources": [
-  		"graphics/*",
-      "js/portal.js"
+  		"graphics/*"
   	]
 }

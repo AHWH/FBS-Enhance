@@ -1,15 +1,39 @@
+//What happen when Service Down
+(function() {
+	if(document.getElementsByTagName("title")[0].innerHTML == "Service Unavailable") {
+		location.assign("https://fbs.intranet.smu.edu.sg");
+		throw new Error("FBS Service unavailable.");
+	}
+}) ();
+
 //Global node
 var clearNode = document.createElement("div");
 clearNode.setAttribute("class", "clear");
+
+//Changing Doctype
+var doctype = document.implementation.createDocumentType(
+    'html',
+    '',
+    ''
+);
+
+document.doctype.parentNode.replaceChild(doctype, document.doctype);
 
 //Grabbing your details
 var treasureNode = document.getElementById("cellInfo");
 var name = treasureNode.childNodes[0].nodeValue
 name = name.substring(0, name.length-2);
 
-var quotaUsed = document.getElementById("MainQuotaUsed").innerHTML;
-var quotaRemain = document.getElementById("MainQuotaRemaining").innerHTML;
-var quotaTotal = parseFloat(quotaUsed) + parseFloat(quotaRemain);
+var quotaUsed = parseFloat(document.getElementById("MainQuotaUsed").innerHTML);
+var quotaRemain = parseFloat(document.getElementById("MainQuotaRemaining").innerHTML);
+var quotaTotal = quotaUsed + quotaRemain;
+
+//Storing details in Chrome.storage (Not in use for now)
+/*var storage = {};
+storage["quotaUsed"] = quotaUsed;
+storage["quotaTotal"] = quotaTotal;
+
+chrome.storage.local.set(storage, function() {console.log("success");});*/
 
 //Removing Nodes
 var titleNode = document.getElementsByTagName("title");
@@ -39,10 +63,10 @@ linkNode.setAttribute("rel", "stylesheet");
 headNode[0].appendChild(linkNode);
 
 //Injecting Script because of content-scripts limitations
-var scriptNode1 = document.createElement("script");
+/*var scriptNode1 = document.createElement("script");
 scriptNode1.setAttribute("type", "text/javascript");
 scriptNode1.setAttribute("src", chrome.extension.getURL("js/portal.js"));
-headNode[0].appendChild(scriptNode1);
+headNode[0].appendChild(scriptNode1);*/
 
 //New Top Bar (temporarily used firstChild to force it to top!)
 var mainHeaderDiv = document.createElement("div");
@@ -73,8 +97,6 @@ iconsNode.setAttribute("id", "iconsNode");
 //User
 var userIconEnclosureNode = document.createElement("div");
 userIconEnclosureNode.setAttribute("class", "iconEnclosure");
-userIconEnclosureNode.setAttribute("onMouseover", "userOnMouseIn()");
-userIconEnclosureNode.setAttribute("onMouseout", "userOnMouseOut();");
 
 var userIconNode = document.createElement("object");
 userIconNode.setAttribute("id", "userIcon");
@@ -119,12 +141,6 @@ mainHeaderDiv.appendChild(iconsNode);
 
 //Clear Div
 mainHeaderDiv.appendChild(clearNode.cloneNode(true));
-
-
-//User Details Popup
-function showUserDetails() {
-	document.getElementById("userDetailsDiv").style.visibility = "visible";
-}
 
 //Main Popup Node
 var userDetailsNode = document.createElement("div");
@@ -177,9 +193,6 @@ var outerBox = document.createElement("div");
 outerBox.setAttribute("id", "outerBox");
 var innerBox = document.createElement("div");
 innerBox.setAttribute("id", "innerBox");
-var usedBox = document.createElement("div");
-usedBox.setAttribute("id", "usedBox")
-innerBox.appendChild(usedBox);
 outerBox.appendChild(innerBox);
 userDetailsNode.appendChild(outerBox);
 
@@ -187,3 +200,27 @@ mainHeaderDiv.appendChild(userDetailsNode);
 //Inserting the mother of all nodes
 var firstChild = bodyNode.firstChild;
 bodyNode.insertBefore(mainHeaderDiv, firstChild);
+
+//Setting up Mouse event listener
+userIconEnclosureNode.addEventListener("mouseover", userOnMouseIn);
+userIconEnclosureNode.addEventListener("mouseout", userOnMouseOut);
+
+function userOnMouseIn() {
+	document.getElementById("userDetailsDiv").style.visibility = "visible";
+	var progress = document.getElementById("innerBox");
+	var usedPercent = parseInt((quotaUsed/quotaTotal)*100)+1;
+	progress.animate([
+		{width: "1%"},
+		{width: usedPercent + "%"}
+	], {
+		duration: 500,
+		delay: 100,
+		iterations: 1,
+		fill: "forwards"
+	});
+}
+
+function userOnMouseOut() {
+	document.getElementById("userDetailsDiv").style.visibility = "hidden";
+	document.getElementById("innerBox").style.width = "1%";
+}
