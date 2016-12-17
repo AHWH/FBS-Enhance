@@ -43,6 +43,10 @@ h3 {
 	background-color: #997d4e;
 }
 
+#helpIcon {
+	pointer-events: none;
+}
+
 .clear {
 	clear: both;
 }
@@ -101,25 +105,7 @@ h3 {
 	height: 100%;
 	width: 1%;
 	max-width: 100%;
-	/*animation: usageAnimation 1s forwards 1s 1;
-	-webkit-animation: usageAnimation 1s forwards 1s 1;*/
 }
-
-/*@keyframes usageAnimation {
-	from {
-	}
-	to {
-		width: 50%;
-	}
-}
-
-@-webkit-keyframes usageAnimation {
-	from {
-	}
-	to {
-		width: 50%;
-	}
-}*/
 
 #form1 {
 	display: block;

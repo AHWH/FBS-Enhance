@@ -123,6 +123,8 @@ notifIconEnclosureNode.appendChild(notifIconNode);
 iconsNode.appendChild(notifIconEnclosureNode);
 
 //Help
+var helpLinkNode = document.createElement("A");
+helpLinkNode.setAttribute("href", "https://intranet.smu.edu.sg/FM/eFM/efm_help.html");
 var helpIconEnclosureNode = document.createElement("div");
 helpIconEnclosureNode.setAttribute("class", "iconEnclosure");
 
@@ -134,7 +136,8 @@ var helpIconTextNode = document.createTextNode("Help");
 
 helpIconNode.appendChild(helpIconTextNode);
 helpIconEnclosureNode.appendChild(helpIconNode);
-iconsNode.appendChild(helpIconEnclosureNode);
+helpLinkNode.appendChild(helpIconEnclosureNode);
+iconsNode.appendChild(helpLinkNode);
 iconsNode.appendChild(clearNode);
 
 mainHeaderDiv.appendChild(iconsNode);
