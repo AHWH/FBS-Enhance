@@ -1,6 +1,9 @@
 body {
-	font-family: Roboto, sans-serif !important;
+	font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 	margin: 0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
 }
 
 h1 {
@@ -15,18 +18,19 @@ h3 {
 	font-weight: 300;
 }
 
-#headerNode {
+#mainHeaderDiv {
 	margin: 0;
+	background-color: white;
 }
 
 #SMULogo {
 	margin: 1% 0 1% 10%;
-	width: 8.5%;
+	height: 6.77%;
 	float: left;
 }
 
 #systemName {
-	margin: 1.35% 0.6% 1% 0.6%;
+	margin: 1.2% 0.6% 1% 0.6%;
 	color: #997d4e;
 	float: left;
 }
@@ -107,21 +111,41 @@ h3 {
 	max-width: 100%;
 }
 
-#form1 {
+/*#form1 {
 	display: block;
 	background-color: red;
-}
+}*/
+
+/*#frameFBS {
+	margin: 0;
+	width: 99%;
+	height: 99%;
+	overflow: none;
+}*/
+
+/*#mainFrame {
+	width: 100%;
+	height: 89%;
+}*/
 
 
 /*Below are specific scaling styling*/
 @media (min-width: 1280px) {
 	/*For the Macbook users & S3 users (divide by 1.5 from base) */
+	body {
+		background-image: url("chrome-extension://__MSG_@@extension_id__/graphics/bg1-1280.jpg");
+	}
+
 	h1 {
-		font-size: 1.333333em;
+		font-size: 1.133333em;
 	}
 
 	h2 {
-		font-size: 1.133333em;
+		font-size: 0.866667em;
+	}
+
+	h3 {
+		font-size: 0.766667em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -143,12 +167,20 @@ h3 {
 
 @media (min-width: 1440px) {
 	/*For the MBP-13 users (divide by 1.33333333 from base) */
+	body {
+		background-image: url("chrome-extension://__MSG_@@extension_id__/graphics/bg1-1440.jpg");
+	}
+
 	h1 {
-		font-size: 1.5em;
+		font-size: 1.275em;
 	}
 
 	h2 {
-		font-size: 1.275em;
+		font-size: 0.975em;
+	}
+
+	h3 {
+		font-size: 0.8625em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -170,12 +202,20 @@ h3 {
 
 @media (min-width: 1600px) {
 	/*For the normal Windows users/SP4 (divide by 1.2 from base) */
+	body {
+		background-image: url("chrome-extension://__MSG_@@extension_id__/graphics/bg1-1600.jpg");
+	}
+
 	h1 {
-		font-size: 1.666667em;
+		font-size: 1.416667em;
 	}
 
 	h2 {
-		font-size: 1.416667em;
+		font-size: 1.083333em;
+	}
+
+	h3 {
+		font-size: 0.9583333em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -197,16 +237,20 @@ h3 {
 
 @media (min-width: 1920px) {
 	/*For the MBP-15 users (base) */
-	h1 {
-		font-size: 2em;
+	body {
+		background-image: url("chrome-extension://__MSG_@@extension_id__/graphics/bg1-1920.jpg");
 	}
 
-	h2 {
+	h1 {
 		font-size: 1.7em;
 	}
 
+	h2 {
+		font-size: 1.3em;
+	}
+
 	h3 {
-		font-size: 1.4em;
+		font-size: 1.15em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {
@@ -228,12 +272,20 @@ h3 {
 
 @media (min-width: 2560px) {
 	/*For the crazy (divide by 0.75 from base)*/
+	body {
+		background-image: url("chrome-extension://__MSG_@@extension_id__/graphics/bg1-2560.jpg");
+	}
+
 	h1 {
-		font-size: 2.666667em;
+		font-size: 2.266667em;
 	}
 
 	h2 {
-		font-size: 2.266667em;
+		font-size: 1.733333em;
+	}
+
+	h3 {
+		font-size: 1.533333em;
 	}
 
 	#userIcon, #notifIcon, #helpIcon {

@@ -28,39 +28,51 @@ var quotaUsed = parseFloat(document.getElementById("MainQuotaUsed").innerHTML);
 var quotaRemain = parseFloat(document.getElementById("MainQuotaRemaining").innerHTML);
 var quotaTotal = quotaUsed + quotaRemain;
 
-//Storing details in Chrome.storage (Not in use for now)
-/*var storage = {};
-storage["quotaUsed"] = quotaUsed;
-storage["quotaTotal"] = quotaTotal;
+//Storing details in Chrome.storage
+/*var frameFBSDoc = document.getElementById("frameFBS").contentDocument;
+console.log(frameFBSDoc);
+var announcementTable = frameFBSDoc.getElementById("dgAnnouncement");
+console.log(announcementTable);
+var announcements = announcementTable.getElementsByTagName("td");
 
-chrome.storage.local.set(storage, function() {console.log("success");});*/
-
-//Removing Nodes
-var titleNode = document.getElementsByTagName("title");
-titleNode[0].innerHTML = "SMU Facilities Booking System";
-
-var metaNodes = document.getElementsByTagName("meta");
-for(var i = 0; i < metaNodes.length; i++) {
-	metaNodes[i].parentNode.removeChild(metaNodes[i]);
+var announcementStorage = {};
+for(var i = 0; i < announcements.length/2; i+=2) {
+	var announcement = announcements[i].innerHTML;
+	var announcementNo = "a" + i;
+	var announcementText = announcements[i+1].innerHTML.replace("&nbsp;", "").trim();
+	announcementStorage[announcementNo] = announcementText;
 }
 
-var scriptNodes = document.getElementsByTagName("script");
-scriptNodes[0].parentNode.removeChild(scriptNodes[0]);
+chrome.storage.local.set(announcementStorage, function() {console.log("success");});
+chrome.storage.local.get(announcementStorage, function(data) {
+	console.log(data);
+})*/
+
+//Removing Nodes
+var headNode = document.head;
+
+while(headNode.firstChild) {
+	headNode.removeChild(headNode.firstChild);
+}
+var titleNode = document.createElement("title");
+var titleTextNode = document.createTextNode("SMU Facilities Booking System");
+titleNode.appendChild(titleTextNode);
+headNode.appendChild(titleNode);
 
 var bodyNode = document.body;
 bodyNode.removeAttribute("ms_positioning");
 bodyNode.removeAttribute("leftmargin");
 bodyNode.removeAttribute("topmargin");
 
-var topNode = document.getElementsByClassName("MainMenu");
-topNode[0].parentNode.removeChild(topNode[0]);
+while(bodyNode.firstChild) {
+	bodyNode.removeChild(bodyNode.firstChild);
+}
 
 //Injecting Google Fonts
-var headNode = document.getElementsByTagName("head");
 var linkNode = document.createElement("link");
-linkNode.setAttribute("href", "https://fonts.googleapis.com/css?family=Roboto:300,500");
+linkNode.setAttribute("href", "https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 linkNode.setAttribute("rel", "stylesheet");
-headNode[0].appendChild(linkNode);
+headNode.appendChild(linkNode);
 
 //Injecting Script because of content-scripts limitations
 /*var scriptNode1 = document.createElement("script");
@@ -201,8 +213,7 @@ userDetailsNode.appendChild(outerBox);
 
 mainHeaderDiv.appendChild(userDetailsNode);
 //Inserting the mother of all nodes
-var firstChild = bodyNode.firstChild;
-bodyNode.insertBefore(mainHeaderDiv, firstChild);
+bodyNode.appendChild(mainHeaderDiv);
 
 //Setting up Mouse event listener
 userIconEnclosureNode.addEventListener("mouseover", userOnMouseIn);
@@ -227,3 +238,7 @@ function userOnMouseOut() {
 	document.getElementById("userDetailsDiv").style.visibility = "hidden";
 	document.getElementById("innerBox").style.width = "1%";
 }
+
+/*var facilityMainFrame = document.createElement("div");
+facilityMainFrame.setAttribute("id", "mainFrame");
+bodyNode.appendChild(facilityMainFrame);*/
